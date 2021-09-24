@@ -7,7 +7,7 @@
 //      dtc-092021-u415
 //      api-server
 //      cluster-1 
-//      cluster-1
+//      us-central1-c
 //      the following values can be found in the yaml:
 //      demo-api
 //      demo-api (in the template/spec section of the deployment)
@@ -56,7 +56,7 @@ pipeline {
          stage('Stage 5') {
             steps {
                 echo 'Get cluster credentials'
-                sh 'gcloud container clusters get-credentials cluster-1 --zone cluster-1 --project dtc-092021-u415'
+                sh 'gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project dtc-092021-u415'
                 echo 'Update the image'
                 echo "gcr.io/dtc-092021-u415/api-server:2.${env.BUILD_ID}"
                 sh "kubectl set image deployment/demo-api demo-api=gcr.io/dtc-092021-u415/api-server:v2.${env.BUILD_ID} --record"
